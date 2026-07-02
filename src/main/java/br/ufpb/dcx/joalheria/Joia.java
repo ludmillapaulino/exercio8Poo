@@ -1,8 +1,9 @@
 package br.ufpb.dcx.joalheria;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Joia {
+public class Joia implements Serializable {
 
     private String nome;
     private String material;

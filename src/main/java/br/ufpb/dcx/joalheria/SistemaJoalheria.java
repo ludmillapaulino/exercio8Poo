@@ -1,26 +1,28 @@
 package br.ufpb.dcx.joalheria;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SistemaJoalheria {
+    public static void main(String[] args) {
 
-    private List<Joia> joias;
+        SistemaJoalheria sistema = new SistemaJoalheria();
 
-    public SistemaJoalheria() {
-        this.joias = new ArrayList<>();
-    }
+        Joia j1 = new Joia("Anel", "Ouro", 1500);
+        Joia j2 = new Joia("Colar", "Prata", 800);
+        Joia j3 = new Joia("Pulseira", "Diamante", -500);
 
-    public void cadastrarJoia(Joia joia) throws Exception {
+        try {
 
-        if (joia.getPreco() < 0) {
-            throw new Exception("Preço inválido");
+            sistema.cadastrarJoia(j1);
+            sistema.cadastrarJoia(j2);
+            sistema.cadastrarJoia(j3);
+
+        } catch (Exception e) {
+
+            System.out.println("Erro: " + e.getMessage());
+
         }
 
-        joias.add(joia);
-    }
-
-    public List<Joia> getJoias() {
-        return joias;
+        for (Joia joia : sistema.getJoias().values()) {
+            System.out.println(joia);
+        }
     }
 }
