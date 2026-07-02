@@ -1,28 +1,51 @@
 package br.ufpb.dcx.joalheria;
 
-public class SistemaJoalheria {
-    public static void main(String[] args) {
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
-        SistemaJoalheria sistema = new SistemaJoalheria();
+public class SistemaJoalheria implements SistemaJoalheriaInterface {
 
-        Joia j1 = new Joia("Anel", "Ouro", 1500);
-        Joia j2 = new Joia("Colar", "Prata", 800);
-        Joia j3 = new Joia("Pulseira", "Diamante", -500);
+    private Map<String, Joia> joias;
+    private GravadorDeDados gravador;
+
+    public SistemaJoalheria() {
+
+        this.gravador = new GravadorDeDados();
 
         try {
+            this.joias = gravador.recuperarDados();
+        } catch (IOException e) {
+            this.joias = new HashMap<>();
+        }
+    }
 
-            sistema.cadastrarJoia(j1);
-            sistema.cadastrarJoia(j2);
-            sistema.cadastrarJoia(j3);
+    @Override
+    public void cadastrarJoia(Joia joia) throws Exception {
 
-        } catch (Exception e) {
-
-            System.out.println("Erro: " + e.getMessage());
-
+        if (joia.getPreco() < 0) {
+            throw new Exception("Preço inválido");
         }
 
-        for (Joia joia : sistema.getJoias().values()) {
-            System.out.println(joia);
-        }
+        joias.put(joia.getNome(), joia);
+    }
+
+    @Override
+    public Joia pesquisarJoia(String nome) {
+        return joias.get(nome);
+    }
+
+    @Override
+    public boolean removerJoia(String nome) {
+        return joias.remove(nome) != null;
+    }
+
+    @Override
+    public void salvarDados() throws IOException {
+        gravador.gravarDados(joias);
+    }
+
+    public Map<String, Joia> getJoias() {
+        return joias;
     }
 }

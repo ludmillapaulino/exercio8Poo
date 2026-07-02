@@ -16,13 +16,15 @@ public class ProgramaPrincipal {
             sistema.cadastrarJoia(j2);
             sistema.cadastrarJoia(j3);
 
+            sistema.salvarDados();
+
         } catch (Exception e) {
 
             System.out.println("Erro: " + e.getMessage());
 
         }
 
-        for (Joia joia : sistema.getJoias()) {
+        for (Joia joia : sistema.getJoias().values()) {
             System.out.println(joia);
         }
     }
