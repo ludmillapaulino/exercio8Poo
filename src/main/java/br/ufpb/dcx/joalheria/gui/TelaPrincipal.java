@@ -31,7 +31,6 @@ public class TelaPrincipal extends JFrame {
         titulo.setFont(new Font("Serif", Font.BOLD, 26));
         titulo.setForeground(new Color(160, 120, 20));
 
-        // Carrega e redimensiona a imagem
         ImageIcon joias = new ImageIcon("./imgs/joias.png");
         Image img = joias.getImage().getScaledInstance(500, 320, Image.SCALE_SMOOTH);
         imagem = new JLabel(new ImageIcon(img), JLabel.CENTER);
