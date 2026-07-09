@@ -10,7 +10,7 @@ public interface SistemaJoalheriaInterface {
      * @param nome Nome da joia.
      * @param material Material da joia.
      * @param preco Preço da joia.
-     * @return true se a joia foi cadastrada com sucesso; false caso contrário.
+     * @return true se a joia foi cadastrada com sucesso; false caso seja o contrário.
      */
     boolean cadastrarJoia(String nome, String material, double preco);
 
