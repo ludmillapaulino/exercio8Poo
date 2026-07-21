@@ -44,11 +44,6 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
     }
 
     @Override
-    public Map<String, Joia> getJoias() {
-        return joias;
-    }
-
-    @Override
     public void salvarDados() throws IOException {
         gravador.salvarJoias(joias);
     }
