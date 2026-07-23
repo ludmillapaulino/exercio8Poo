@@ -46,17 +46,11 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
     }
 
     public List<Joia> pesquisarJoiasComPrecoMaiorQue(double valor) {
-        List<Joia> lista = new ArrayList<>();
-        for(Joia j : this.joias.values()) {
-            if(j.getPreco() > valor) {
-                lista.add(j);
-            }
-        }
-        return lista;
+        return this.joias.values().stream().filter(joia -> joia.getPreco() > valor).toList();
     }
 
     public List<Joia> pesquisarJoiasPeloMaterial(MATERIAL material) {
-        return null;
+        return this.joias.values().stream().filter(joia -> joia.getMaterial() == material).toList();
     }
 
     public Joia pesquisarJoiaMaisCara() {
